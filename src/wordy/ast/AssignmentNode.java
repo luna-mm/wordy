@@ -3,6 +3,8 @@ package wordy.ast;
 import java.util.Map;
 import java.util.Objects;
 
+import wordy.interpreter.EvaluationContext;
+
 import static wordy.ast.Utils.orderedMap;
 
 /**
@@ -54,5 +56,12 @@ public class AssignmentNode extends StatementNode {
             + "variable='" + variable + '\''
             + ", expression=" + expression
             + '}';
+    }
+
+    @Override
+    protected void doRun(EvaluationContext context) {
+        String lhs = variable.getName();
+        double rhs = expression.doEvaluate(context);
+        context.set(lhs, rhs);
     }
 }
