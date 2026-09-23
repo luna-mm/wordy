@@ -1,0 +1,5 @@
+The official solution for this has a lot more switch cases compared to mine which used a whole... 0...
+For example, with the ConditionalNode, I feel like I got the right idea for a lot of it,
+but the way I got there is completely different yet a little simpler to read imo, since the
+official solutions does things by case and I did simple if else if's. I can definitely learn to 
+use switch cases a lot more, but there's a beauty in the simple yet verbose and humble if else if.
