@@ -1,5 +1,6 @@
 package wordy.ast;
 
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -89,6 +90,18 @@ public class ConditionalNode extends StatementNode {
             if (evalLhs < evalRhs) ifTrue.doRun(context);
             else ifFalse.doRun(context);
         }
+    }
 
+    public void compile(PrintWriter out) {
+        out.append("if(");
+        lhs.compile(out);
+        if (operator.equals(Operator.EQUALS)) out.append("==");
+        else if (operator.equals(Operator.GREATER_THAN)) out.append(">");
+        else if (operator.equals(Operator.LESS_THAN)) out.append("<");
+        rhs.compile(out);
+        out.append(") ");
+        ifTrue.compile(out);
+        out.append("else ");
+        ifFalse.compile(out);
     }
 }
